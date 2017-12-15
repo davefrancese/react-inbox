@@ -205,6 +205,17 @@ class App extends Component {
     }
   }
 
+  deleteMessage = () => {
+    let delMess = this.state.messages;
+    let arr = [];
+    for (var i = 0; i < delMess.length; i++) {
+      if (delMess[i].selected !== true) {
+        arr.push(delMess[i])
+        this.setState({messages: arr})
+      }
+    }
+  }
+
   render() {
     return (<div className="App">
       <Toolbar
@@ -215,6 +226,7 @@ class App extends Component {
         markUnread={this.markUnread}
         applyLabel={this.applyLabel}
         removeLabel={this.removeLabel}
+        deleteMessage={this.deleteMessage}
       />
       <MessageList
         messages={this.state.messages}
